@@ -8,23 +8,27 @@ import AppContainer from '../components/AppContainer';
 import PrivateRoute from '../components/PrivateRoute';
 import PublicRoute from '../components/PublicRoute';
 
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Switch} from 'react-router-dom';
+import About from "./About";
+import GetStarted from "./GetStarted";
 
 const AppRouter = () => {
-  return (
-    <Router>
-      <AppContainer>
-        <Switch>
-          <PublicRoute exact path="/" component={Main} />
-          <PublicRoute exact path="/signup" component={Signup} />
-          <PublicRoute exact path="/login" component={Login} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <PublicRoute exact={false} path="/" component={Main} />
-        </Switch>
-      </AppContainer>
-    </Router>
-  );
+    return (
+        <Router>
+            <AppContainer>
+                <Switch>
+                    <PublicRoute exact path="/" component={Main} />
+                    <PublicRoute exact path="/signup" component={Signup} />
+                    <PublicRoute exact path="/login" component={Login} />
+                    <PublicRoute exact path="/about" component={About} />
+                    <PublicRoute exact path="/get-started" component={GetStarted} />
+                    <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                    <PrivateRoute exact path="/profile" component={Profile} />
+                    <PublicRoute exact={false} path="/" component={Main} />
+                </Switch>
+            </AppContainer>
+        </Router>
+    );
 };
 
 export default AppRouter;
