@@ -25,9 +25,9 @@ jobs:
     - with:
         node-version: ${{ matrix.node-version }}   
     - name: Install Dependencies 
-    - run: yarn setup
+      run: yarn setup
     - name: Run Linting
-    - run: yarn lint
+      run: yarn lint
     - name: Run TypeScript Compile
-    - run: yarn build
+      run: yarn build
     
