@@ -3,24 +3,21 @@
 
 name: Node.js Build (Eventually CI)
 
-on:
-  push:
-    branches: [ master, dev ]
-  pull_request:
-    branches: [ master, dev ]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
-
+        node: [8.x, 10.x, 12.x]
+    name: Node ${{ matrix.node }} sample
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-    - uses: actions/setup-node@v1
-    - with:
-        node-version: ${{ matrix.node-version }}   
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: yarn setup
+      - run: yarn lint
+      - run: yarn build
