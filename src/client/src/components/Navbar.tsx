@@ -22,10 +22,13 @@ const Navbar = () => {
     return (
         <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
+                <a
+                    className="navbar-item"
+                    onClick={() => {
+                        history.push('/');
+                    }}>
                     <img src="https://via.placeholder.com/112x28" width="112" height="28" alt="logo" />
                 </a>
-
                 <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
                    data-target="navbarBasicExample">
                     <span aria-hidden="true" />
@@ -43,13 +46,23 @@ const Navbar = () => {
                     >
                         Home
                     </a>
-
-                    <a className="navbar-item">
+                    <a
+                        className="navbar-item"
+                        onClick={() => {
+                            history.push('/about');
+                        }}
+                    >
                         About
                     </a>
-
+                    <a
+                        className="navbar-item"
+                        onClick={() => {
+                            history.push('/get-started');
+                        }}
+                    >
+                        Get Started
+                    </a>
                 </div>
-
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">

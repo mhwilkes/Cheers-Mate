@@ -21,28 +21,10 @@ const Main = () => {
 
   return (
     <ContentContainer>
-      <h1 className="title is-1">Welcome to TS Boilerplate</h1>
+      <h1 className="title is-1">Welcome to Pod 1.2.0 Hackathon Title</h1>
       <p>
-        Dead simple monorepo boilerplate web project designed to take you from
-        Git Cloning to Heroku Deployment in less 5 minutes. 🚀🤩
+        WebRTC prototype service to allow people that are lonely to talk during Covid-19. 🚀🤩
       </p>
-      <a href="https://github.com/Orang-utan/ts-boilerplate">
-        Check out our Github
-      </a>
-      <ButtonGroup>
-        <Button
-          className="button is-primary"
-          onClick={() => history.push('/signup')}
-        >
-          Sign Up
-        </Button>
-        <Button
-          className="button is-secondary"
-          onClick={() => history.push('/login')}
-        >
-          Login
-        </Button>
-      </ButtonGroup>
     </ContentContainer>
   );
 };
