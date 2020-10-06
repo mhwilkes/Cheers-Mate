@@ -11,6 +11,7 @@ import PublicRoute from '../components/PublicRoute';
 import {BrowserRouter as Router, Switch} from 'react-router-dom';
 import About from "./About";
 import GetStarted from "./GetStarted";
+import Meeting from "./Meeting";
 
 const AppRouter = () => {
     return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
                     <PublicRoute exact path="/login" component={Login} />
                     <PublicRoute exact path="/about" component={About} />
                     <PublicRoute exact path="/get-started" component={GetStarted} />
+                    <PublicRoute exact path="/meeting" component={Meeting} />
                     <PrivateRoute exact path="/dashboard" component={Dashboard} />
                     <PrivateRoute exact path="/profile" component={Profile} />
                     <PublicRoute exact={false} path="/" component={Main} />
