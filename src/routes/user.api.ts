@@ -9,9 +9,25 @@ import {
   validateRefreshToken,
 } from './user.util';
 
-const router = express.Router();
+import { v4 as uuidv4 } from 'uuid';
 
+const router = express.Router();
 const saltRounds = 10;
+
+// create a new meeting room
+router.get('/meeting', (req, res) => {
+  var id = uuidv4();
+  res.redirect(`/meeting/${id}`)
+});
+
+// connect to a meeting room
+router.get('/meeting/:room', (req, res) => {
+  res.render('room', {roomId: req.params.room});
+});
+
+// router.post('/meeting', (req, res) => {
+//   res.send("ROOM " + uuidv4() + "\n");
+// });
 
 // create new user
 router.post('/signup', async (req, res) => {
