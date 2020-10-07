@@ -1,22 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useHistory} from 'react-router-dom';
 
 const ContentContainer = styled.div`
   text-align: center;
-  margin: 10vh auto;
-  width: 80vw;
 `;
 
 const Main = () => {
-
-  return (
-    <ContentContainer>
-      <h1 className="title is-1">Welcome to Pod 1.2.0 Hackathon Title</h1>
-      <p>
-        WebRTC prototype service to allow people that are lonely to talk during Covid-19. 🚀🤩
-      </p>
-    </ContentContainer>
-  );
+    let history = useHistory();
+    return (
+        <ContentContainer>
+            <div className="hero-body">
+                <div className="container has-text-centered has-text-weight-bold">
+                    <h1 className="title is-size-1">
+                        This is the title
+                    </h1>
+                    <h2 className="subtitle is-size-4 has-text-weight-bold">
+                        This is the subtitle
+                    </h2>
+                    <h2
+                        className="button is-info is-size-5"
+                        onClick={() => history.push('/meeting')}
+                    >
+                        Create Room
+                    </h2>
+                </div>
+            </div>
+        </ContentContainer>
+    );
 };
 
 export default Main;
