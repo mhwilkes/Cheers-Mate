@@ -37,57 +37,15 @@ const Navbar = () => {
                 </a>
             </div>
             <div id="navbarBasicExample" className="navbar-menu">
-                <div className="navbar-start">
-                    <a
-                        className="navbar-item"
-                        onClick={() => {
-                            history.push('/');
-                        }}
-                    >
-                        Home
-                    </a>
-                    <a
-                        className="navbar-item"
-                        onClick={() => {
-                            history.push('/about');
-                        }}
-                    >
-                        About
-                    </a>
-                    <a
-                        className="navbar-item"
-                        onClick={() => {
-                            history.push('/get-started');
-                        }}
-                    >
-                        Get Started
-                    </a>
-                </div>
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
                             <h2
                                 className="button is-primary"
-                                onClick={() => history.push('/signup')}
+                                onClick={() => history.push('/meeting')}
                             >
-                                Sign Up
+                                Create Room
                             </h2>
-                            {loggedIn && (
-                                <h2
-                                    className="title is-6 has-text-white"
-                                    onClick={() => auth.logout()}
-                                >
-                                    Logout
-                                </h2>
-                            )}
-                            {!loggedIn && (
-                                <h2
-                                    className="button is-info"
-                                    onClick={() => history.push('/login')}
-                                >
-                                    Login
-                                </h2>
-                            )}
                         </div>
                     </div>
                 </div>
