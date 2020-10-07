@@ -18,10 +18,8 @@ const Main = () => {
                     <h2 className="subtitle is-size-4 has-text-weight-bold">
                         This is the subtitle
                     </h2>
-                    <h2
-                        className="button is-info is-size-5"
-                        onClick={() => history.push('/meeting')}
-                    >
+                    <h2 className="button is-info is-size-5"
+                        onClick={() => history.push('/create')}>
                         Create Room
                     </h2>
                 </div>

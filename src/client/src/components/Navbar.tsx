@@ -45,16 +45,13 @@ const Navbar = () => {
                             <div className="navbar-item">
                                 <div className="buttons">
                                     {location.pathname == "/" && (
-
                                         <h2
                                             className="button is-info is-size-5"
-                                            onClick={() => history.push('/meeting')}
+                                            onClick={() => history.push('/create')}
                                         >
                                             Create Room
                                         </h2>
-                                    )
-                                    }
-
+                                    )}
                                 </div>
                             </div>
                         </div>
