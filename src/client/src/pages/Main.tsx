@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useHistory} from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const ContentContainer = styled.div`
   text-align: center;
@@ -21,6 +22,7 @@ const Main = () => {
                     <h2
                         className="button is-info is-size-5"
                         onClick={() => history.push('/meeting')}
+                        // onClick={ ()=> alert(uuidv4()) }
                     >
                         Create Room
                     </h2>
