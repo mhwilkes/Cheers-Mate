@@ -1,3 +1,29 @@
+// const express = require('express');
+
+// const app = express();
+// const server = require('http').Server(app);
+// const io = require('socket.io')(server);
+// const { v4: uuidv4 } = require('uuid');
+
+// app.set('view engine', 'ejs');
+// app.use(express.static('public'));
+
+// app.get('/', (req, res) => {
+//   console.log("Welcome home");
+// });
+
+// app.get('/meeting', (req, res) => {
+//   var id = uuidv4();
+//   console.log(id);
+//   res.redirect(`/meeting/${id}`);
+// });
+
+// app.get('/meeting/:room', (req, res) => {
+//   res.render('room', {roomId: req.params.room});
+// });
+
+// server.listen(3000);
+
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
@@ -8,6 +34,7 @@ import connectToDatabase from './utils/mongo';
 import './utils/config';
 
 import userRouter from './routes/user.api';
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 
@@ -21,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // API Routes
-app.use('/api/users', userRouter);
+app.use('/', userRouter);
 
 // Serving static files
 if (process.env.NODE_ENV === 'production') {
@@ -39,6 +66,20 @@ const server = app.listen(app.get('port'), () => {
 });
 
 const io = socket(server);
+
+// app.set('view engine', 'ejs');
+// app.use(express.static('public'));
+
+// app.get('/', (req, res) => {
+//   console.log("Welcome home");
+// })
+
+// app.get('/meeting', (req, res) => {
+//   var id = uuidv4();
+//   console.log(id);
+//   res.redirect(`/meeting/${id}`);
+// });
+
 io.on('connection', (soc) => {
   console.log('Connected...');
   soc.on('disconnect', () => {
