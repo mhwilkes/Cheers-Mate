@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import io from 'socket.io-client';
-import Peer from 'simple-peer';
+import SimplePeer from 'simple-peer';
 
 const ContentContainer = styled.div`
   text-align: center;
@@ -25,6 +25,7 @@ const Video = (props) => {
     });
   }, []);
 
+  // @ts-ignore
   return <StyledVideo playsInline autoPlay ref={ref} />;
 };
 
@@ -96,12 +97,12 @@ const Meeting = (props: { match: any }) => {
 
   // @ts-ignore
   function createPeer(userToSignal, callerID, stream) {
-    const peer = new Peer({
+    const peer = new SimplePeer({
       initiator: true,
       trickle: false,
       stream,
     });
-
+    // @ts-ignore
     peer.on('signal', (signal) => {
       // @ts-ignore
       socketRef.current.emit('sending signal', {
@@ -116,7 +117,7 @@ const Meeting = (props: { match: any }) => {
 
   // @ts-ignore
   function addPeer(incomingSignal, callerID, stream) {
-    const peer = new Peer({
+    const peer = new SimplePeer({
       initiator: false,
       trickle: false,
       stream,
@@ -132,6 +133,7 @@ const Meeting = (props: { match: any }) => {
     return peer;
   }
 
+  // @ts-ignore
   return (
     <ContentContainer>
       <div className="hero-body">
@@ -140,6 +142,7 @@ const Meeting = (props: { match: any }) => {
           <h2 className="subtitle is-size-4 has-text-weight-bold">
             Room ID: {match.params.id}
           </h2>
+          // @ts-ignore
           <StyledVideo muted ref={userVideo} autoPlay playsInline />
           {peers.map((peer, index) => {
             return <Video key={index} peer={peer} />;
