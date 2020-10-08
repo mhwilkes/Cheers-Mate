@@ -10,14 +10,16 @@ import {
 } from './user.util';
 
 import { v4 as uuidv4 } from 'uuid';
+import { resolveSoa } from 'dns';
 
 const router = express.Router();
 const saltRounds = 10;
 
 // create a new meeting room
-router.get('/meeting', (req, res) => {
-  var id = uuidv4();
-  res.redirect(`/meeting/${id}`)
+router.get('/create', (req, res) => {
+  let id = uuidv4();
+  res.send({roomId: id});
+  res.redirect(`/meeting/${id}`);
 });
 
 // connect to a meeting room
