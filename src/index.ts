@@ -39,9 +39,14 @@ const server = app.listen(app.get('port'), () => {
   console.log('  Press Command C to stop\n');
 });
 
-const users = {};
 
-const socketToRoom = {};
+
+var users: { [roomID: string]: Array<string>; };
+// var users : {
+//   roomID: string;
+// } = {};
+
+var socketToRoom: { [socketID: string]: string; };
 
 const io = socket(server);
 
@@ -55,10 +60,10 @@ io.on('connection', (socket) => {
       }
       users[roomID].push(socket.id);
     } else {
-      users[roomID] = [socket.id];
+      users[roomID]= [socket.id];
     }
     socketToRoom[socket.id] = roomID;
-    const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
+    const usersInThisRoom = users.roomID.filter((id) => id !== socket.id);
 
     socket.emit('all users', usersInThisRoom);
   });
