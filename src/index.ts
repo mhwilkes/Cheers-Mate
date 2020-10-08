@@ -8,7 +8,6 @@ import connectToDatabase from './utils/mongo';
 import './utils/config';
 
 import userRouter from './routes/user.api';
-import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 
@@ -22,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // API Routes
-app.use('/', userRouter);
+app.use('/api/users', userRouter);
 
 // Serving static files
 if (process.env.NODE_ENV === 'production') {
@@ -39,17 +38,14 @@ const server = app.listen(app.get('port'), () => {
   console.log('  Press Command C to stop\n');
 });
 
+const io = socket(server);
 
-
-var users: { [roomID: string]: Array<string>; };
+let users: { [roomID: string]: Array<string> };
 // var users : {
 //   roomID: string;
 // } = {};
 
-var socketToRoom: { [socketID: string]: string; };
-
-const io = socket(server);
-
+let socketToRoom: { [socketID: string]: string };
 io.on('connection', (socket) => {
   socket.on('join room', (roomID) => {
     if (users[roomID]) {
@@ -60,10 +56,10 @@ io.on('connection', (socket) => {
       }
       users[roomID].push(socket.id);
     } else {
-      users[roomID]= [socket.id];
+      users[roomID] = [socket.id];
     }
     socketToRoom[socket.id] = roomID;
-    const usersInThisRoom = users.roomID.filter((id) => id !== socket.id);
+    const usersInThisRoom = users[roomID].filter((id) => id !== socket.id);
 
     socket.emit('all users', usersInThisRoom);
   });
