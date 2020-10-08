@@ -37,6 +37,7 @@
     "@types/lodash": "^4.14.157",
     "@types/mongoose": "^5.7.29",
     "@types/node": "^14.0.14",
+    "@types/simple-peer": "^9.6.0",
     "@types/socket.io": "^2.1.8",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
