@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
+import { ENDPOINT } from "../util/config"
 
 const Container = styled.div`
   padding: 20px;
@@ -42,7 +43,7 @@ const Room = (props) => {
   const roomID = props.match.params.roomID;
 
   useEffect(() => {
-    socketRef.current = io.connect('/');
+    socketRef.current = io.connect(ENDPOINT + '/');
     navigator.mediaDevices
       .getUserMedia({ video: videoConstraints, audio: true })
       .then((stream) => {
