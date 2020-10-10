@@ -24,6 +24,7 @@
     "server": "node src/index.js",
     "client": "cd src/client &&  node_modules/.bin/react-scripts start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "start": "node src/index.js",
     "setup": "yarn install && cd src/client && yarn install",
     "heroku-postbuild": "cd src/client && yarn install && yarn build"
   },
