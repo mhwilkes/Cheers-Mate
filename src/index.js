@@ -4,6 +4,7 @@ const http = require("http");
 const app = express();
 const index = http.createServer(app);
 const socket = require("socket.io");
+const path = require('path');
 const io = socket(index);
 
 const users = {};
