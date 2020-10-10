@@ -1,1 +1,1 @@
-web: node src/client/src/index.jsx
+web: node src/client/src/index
