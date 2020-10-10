@@ -26,7 +26,7 @@
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "build": "cd src/client && yarn build",
     "setup": "yarn install && cd src/client && yarn install",
-    "heroku-postbuild": "cd src/client && yarn build"
+    "heroku-postbuild": "cd src/client && yarn install && yarn build"
   },
   "browserslist": {
     "production": [
