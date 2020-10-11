@@ -1,5 +1,15 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import Logo from '../public/images/logo.png';
+import styled from 'styled-components';
+// Colors:
+// Red: #e51b23
+// Black: #000
+// Blue: #426cb4
+
+const Button = styled.h2`
+  background-color: #426cb4 !important;
+`;
 
 const Navbar = () => {
   let history = useHistory();
@@ -19,12 +29,7 @@ const Navbar = () => {
                 history.push('/');
               }}
             >
-              <img
-                src="https://via.placeholder.com/112x28"
-                width="112"
-                height="28"
-                alt="logo"
-              />
+              <img src={Logo} alt="logo" />
             </h2>
             <a
               role="button"
@@ -44,12 +49,12 @@ const Navbar = () => {
               <div className="navbar-item">
                 <div className="buttons">
                   {location.pathname === '/' && (
-                    <h2
+                    <Button
                       className="button is-info is-size-5"
                       onClick={() => history.push('/create')}
                     >
-                      Create Room
-                    </h2>
+                      Start a Room
+                    </Button>
                   )}
                 </div>
               </div>

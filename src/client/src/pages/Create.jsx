@@ -9,6 +9,18 @@ const ContentContainer = styled.div`
   width: 80vw;
 `;
 
+const Button = styled.h2`
+  background-color: #426cb4 !important;
+`;
+
+const Header = styled.h1`
+  color: #000;
+`;
+
+const SubHeader = styled.h2`
+  color: #426cb4 !important;
+`;
+
 const Create = () => {
   let history = useHistory();
   let id = uuid();
@@ -16,16 +28,18 @@ const Create = () => {
     <ContentContainer>
       <div className="hero-body">
         <div className="container has-text-centered has-text-weight-bold">
-          <h1 className="title is-size-1">Create Meeting Room</h1>
-          <h2 className="subtitle is-size-4 has-text-weight-bold">
-            Click to Create Meeting
-          </h2>
-          <h2
+          <Header className="title is-size-1">
+            You are on your way to creating your own meeting room!
+          </Header>
+          <SubHeader className="subtitle is-size-4 has-text-weight-bold">
+            Click this button to create your own room.
+          </SubHeader>
+          <Button
             className="button is-info is-size-5"
             onClick={() => history.push(`/meeting/${id}`)}
           >
-            Create Room
-          </h2>
+            Start Here
+          </Button>
         </div>
       </div>
     </ContentContainer>

@@ -1,5 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar';
+import styled from 'styled-components';
+
+const FooterText1 = styled.p`
+  color: #426cb4;
+`;
 
 const AppContainer = ({ children }) => {
   return (
@@ -9,7 +14,9 @@ const AppContainer = ({ children }) => {
       <div className="hero-foot">
         <nav className="tabs">
           <div className="container is-fluid has-text-centered">
-            <p className="p-1">Go ahead, make a friend!</p>
+            <FooterText1 className="p-1 has-text-weight-bold">
+              Go ahead! Find a friend now!
+            </FooterText1>
           </div>
         </nav>
       </div>
