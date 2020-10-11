@@ -12,10 +12,11 @@ const StyledVideo = styled.video`
 `;
 
 const ContentContainer = styled.div`
-  text-align: center;
-  margin: 10vh auto;
-  width: 80vw;
+  padding: 20px;
   display: flex;
+  height: 100vh;
+  width: 90vw;
+  margin: auto;
   flex-wrap: wrap;
 `;
 
