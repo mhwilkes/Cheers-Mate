@@ -15,6 +15,7 @@ const ContentContainer = styled.div`
   text-align: center;
   margin: 10vh auto;
   width: 80vw;
+  flex-direction: row;
 `;
 
 const Video = (props) => {
@@ -130,12 +131,10 @@ const Room = (props) => {
   return (
     <ContentContainer>
       <div className="hero-body">
-        <div className="container has-text-centered has-text-weight-bold">
-          <StyledVideo muted ref={userVideo} autoPlay playsInline />
-          {peers.map((peer) => {
-            return <Video key={peer.peerID} peer={peer.peer} />;
-          })}
-        </div>
+        <StyledVideo muted ref={userVideo} autoPlay playsInline />
+        {peers.map((peer) => {
+          return <Video key={peer.peerID} peer={peer.peer} />;
+        })}
       </div>
     </ContentContainer>
   );
