@@ -7,6 +7,8 @@ import { ENDPOINT } from '../util/config';
 const StyledVideo = styled.video`
   height: 40%;
   width: 50%;
+  margin: 2vw 2vh;
+  box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
 `;
 
 const ContentContainer = styled.div`
