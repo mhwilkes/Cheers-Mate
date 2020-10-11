@@ -15,6 +15,11 @@ const ContentContainer = styled.div`
   text-align: center;
   margin: 10vh auto;
   width: 80vw;
+  display: flex;
+  height: 100vh;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
 `;
 
 const Video = (props) => {
