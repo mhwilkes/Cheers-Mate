@@ -2,20 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
-import { ENDPOINT } from "../util/config"
-
-const Container = styled.div`
-  padding: 20px;
-  display: flex;
-  height: 100vh;
-  width: 90%;
-  margin: auto;
-  flex-wrap: wrap;
-`;
+import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
   height: 40%;
   width: 50%;
+`;
+
+const ContentContainer = styled.div`
+  text-align: center;
+  margin: 10vh auto;
+  width: 80vw;
 `;
 
 const Video = (props) => {
@@ -57,7 +54,10 @@ const Room = (props) => {
               peerID: userID,
               peer,
             });
-            peers.push(peer);
+            peers.push({
+              peerID: userID,
+              peer,
+            });
           });
           setPeers(peers);
         });
@@ -68,13 +68,25 @@ const Room = (props) => {
             peerID: payload.callerID,
             peer,
           });
-
-          setPeers((users) => [...users, peer]);
+          const peerObj = {
+            peer,
+            peerID: payload.callerID,
+          };
+          setPeers((users) => [...users, peerObj]);
         });
 
         socketRef.current.on('receiving returned signal', (payload) => {
           const item = peersRef.current.find((p) => p.peerID === payload.id);
           item.peer.signal(payload.signal);
+        });
+        socketRef.current.on('user left', (id) => {
+          const peerObj = peersRef.current.find((p) => p.peerID === id);
+          if (peerObj) {
+            peerObj.peer.destroy();
+          }
+          const peers = peersRef.current.filter((p) => p.peerID !== id);
+          peersRef.current = peers;
+          setPeers(peers);
         });
       });
   }, [roomID]);
@@ -114,12 +126,16 @@ const Room = (props) => {
   }
 
   return (
-    <Container>
-      <StyledVideo muted ref={userVideo} autoPlay playsInline />
-      {peers.map((peer, index) => {
-        return <Video key={index} peer={peer} />;
-      })}
-    </Container>
+    <ContentContainer>
+      <div className="hero-body">
+        <div className="container has-text-centered has-text-weight-bold">
+          <StyledVideo muted ref={userVideo} autoPlay playsInline />
+          {peers.map((peer) => {
+            return <Video key={peer.peerID} peer={peer.peer} />;
+          })}
+        </div>
+      </div>
+    </ContentContainer>
   );
 };
 
