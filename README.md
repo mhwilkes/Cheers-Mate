@@ -2,6 +2,8 @@
 
 ![demo](docs/images/demo.png 'Demo')
 
+Live example hosted on heroku can be found at [cheersm8.tk](https://cheersm8.tk)
+
 Talking to your friends couldn't be simpler!
 
 It is built using the React, Express, simple-peer, and BulmaCSS.
