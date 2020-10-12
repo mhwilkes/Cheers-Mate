@@ -6,6 +6,7 @@ import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
+  margin
 `;
 
 const Video = (props) => {
@@ -17,7 +18,9 @@ const Video = (props) => {
     });
   }, [props.peer]);
 
-  return <StyledVideo playsInline autoPlay ref={ref} />;
+  return (
+    <StyledVideo className="column is-half" playsInline autoPlay ref={ref} />
+  );
 };
 
 const videoConstraints = {
@@ -129,13 +132,7 @@ const Room = (props) => {
           playsInline
         />
         {peers.map((peer) => {
-          return (
-            <Video
-              className="column is-half"
-              key={peer.peerID}
-              peer={peer.peer}
-            />
-          );
+          return <Video key={peer.peerID} peer={peer.peer} />;
         })}
       </div>
     </div>
