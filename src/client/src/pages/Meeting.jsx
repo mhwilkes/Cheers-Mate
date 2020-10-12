@@ -6,7 +6,7 @@ import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
-  margin
+  padding: 0 !important;
 `;
 
 const Video = (props) => {
@@ -19,12 +19,7 @@ const Video = (props) => {
   }, [props.peer]);
 
   return (
-    <StyledVideo
-      className="column is-half p-0"
-      playsInline
-      autoPlay
-      ref={ref}
-    />
+    <StyledVideo className="column is-half" playsInline autoPlay ref={ref} />
   );
 };
 
@@ -130,7 +125,7 @@ const Room = (props) => {
     <div className="hero-body">
       <div className="columns is-multiline">
         <StyledVideo
-          className="column is-half p-0"
+          className="column is-half"
           muted
           ref={userVideo}
           autoPlay
