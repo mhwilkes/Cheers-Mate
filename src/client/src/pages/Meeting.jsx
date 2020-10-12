@@ -5,16 +5,8 @@ import styled from 'styled-components';
 import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
-  height: 40%;
-  width: 50%;
   margin: 2vw 2vh;
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
-`;
-
-const ContentContainer = styled.div`
-  text-align: center;
-  margin: 10vh auto;
-  width: 80vw;
 `;
 
 const Video = (props) => {
@@ -128,28 +120,26 @@ const Room = (props) => {
   }
 
   return (
-    <ContentContainer>
-      <div className="hero-body">
-        <div className="columns">
-          <StyledVideo
-            className="column-is-full"
-            muted
-            ref={userVideo}
-            autoPlay
-            playsInline
-          />
-          {peers.map((peer) => {
-            return (
-              <Video
-                className="column-is-half"
-                key={peer.peerID}
-                peer={peer.peer}
-              />
-            );
-          })}
-        </div>
+    <div className="hero-body">
+      <div className="columns">
+        <StyledVideo
+          className="column-is-half"
+          muted
+          ref={userVideo}
+          autoPlay
+          playsInline
+        />
+        {peers.map((peer) => {
+          return (
+            <Video
+              className="column-is-half"
+              key={peer.peerID}
+              peer={peer.peer}
+            />
+          );
+        })}
       </div>
-    </ContentContainer>
+    </div>
   );
 };
 
