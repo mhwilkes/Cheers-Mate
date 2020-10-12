@@ -6,6 +6,7 @@ import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
+  width: 80%;
 `;
 
 const Video = (props) => {
