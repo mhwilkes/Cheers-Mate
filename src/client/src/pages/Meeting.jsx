@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
-  margin: 2vw 2vh;
+  margin: 1vw 1vh;
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
 `;
 
