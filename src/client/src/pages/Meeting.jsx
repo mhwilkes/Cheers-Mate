@@ -121,7 +121,7 @@ const Room = (props) => {
 
   return (
     <div className="hero-body">
-      <div className="columns">
+      <div className="columns is-multiline">
         <StyledVideo
           className="column-is-half"
           muted
