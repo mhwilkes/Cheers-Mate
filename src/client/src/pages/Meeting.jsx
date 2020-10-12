@@ -122,20 +122,18 @@ const Room = (props) => {
   return (
     <div className="hero-body">
       <div className="columns is-multiline">
-        <StyledVideo
-          className="column-is-half"
-          muted
-          ref={userVideo}
-          autoPlay
-          playsInline
-        />
+        <div className="column-is-half">
+          <StyledVideo muted ref={userVideo} autoPlay playsInline />
+        </div>
         {peers.map((peer) => {
           return (
-            <Video
-              className="column-is-half"
-              key={peer.peerID}
-              peer={peer.peer}
-            />
+            <div className="column-is-half">
+              <Video
+                className="column-is-half"
+                key={peer.peerID}
+                peer={peer.peer}
+              />
+            </div>
           );
         })}
       </div>
