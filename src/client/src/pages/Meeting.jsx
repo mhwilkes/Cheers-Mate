@@ -4,18 +4,7 @@ import Peer from 'simple-peer';
 import styled from 'styled-components';
 import { ENDPOINT } from '../util/config';
 
-const Container = styled.div`
-  padding: 20px;
-  display: flex;
-  height: 100vh;
-  width: 80%;
-  margin: auto;
-  flex-wrap: wrap;
-`;
-
 const StyledVideo = styled.video`
-  height: 40%;
-  width: 50%;
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
 `;
 
@@ -131,8 +120,10 @@ const Room = (props) => {
 
   return (
     <div className="hero-body">
-      <Container>
-        <StyledVideo muted ref={userVideo} autoPlay playsInline />
+      <div className="columns is-multiline">
+        <div className="column-is-half">
+          <StyledVideo muted ref={userVideo} autoPlay playsInline />
+        </div>
         {peers.map((peer) => {
           return (
             <div className="column-is-half">
@@ -144,7 +135,7 @@ const Room = (props) => {
             </div>
           );
         })}
-      </Container>
+      </div>
     </div>
   );
 };
