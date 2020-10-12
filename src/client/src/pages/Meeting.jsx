@@ -6,7 +6,6 @@ import { ENDPOINT } from '../util/config';
 
 const StyledVideo = styled.video`
   box-shadow: 2px 4px 8px 2px black, 0 6px 20px 0 black;
-  width: 80%;
 `;
 
 const Video = (props) => {
@@ -122,18 +121,20 @@ const Room = (props) => {
   return (
     <div className="hero-body">
       <div className="columns is-multiline">
-        <div className="column-is-half">
-          <StyledVideo muted ref={userVideo} autoPlay playsInline />
-        </div>
+        <StyledVideo
+          className="column is-half"
+          muted
+          ref={userVideo}
+          autoPlay
+          playsInline
+        />
         {peers.map((peer) => {
           return (
-            <div className="column-is-half">
-              <Video
-                className="column-is-half"
-                key={peer.peerID}
-                peer={peer.peer}
-              />
-            </div>
+            <Video
+              className="column is-half"
+              key={peer.peerID}
+              peer={peer.peer}
+            />
           );
         })}
       </div>
