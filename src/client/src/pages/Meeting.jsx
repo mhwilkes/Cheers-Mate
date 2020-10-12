@@ -19,7 +19,12 @@ const Video = (props) => {
   }, [props.peer]);
 
   return (
-    <StyledVideo className="column is-half" playsInline autoPlay ref={ref} />
+    <StyledVideo
+      className="column is-half p-0"
+      playsInline
+      autoPlay
+      ref={ref}
+    />
   );
 };
 
@@ -125,7 +130,7 @@ const Room = (props) => {
     <div className="hero-body">
       <div className="columns is-multiline">
         <StyledVideo
-          className="column is-half"
+          className="column is-half p-0"
           muted
           ref={userVideo}
           autoPlay
